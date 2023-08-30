@@ -1,0 +1,171 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+<script src="/webjars/jquery-validation/1.19.0/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.min.js}"></script>
+
+
+
+<style>
+.row1 {
+	padding: 7px;
+}
+
+.error {
+	color: red;
+	padding-left: 10px;
+}
+.underline {
+	text-decoration: underline;
+	color: #08a6f1;
+	cursor: pointer;
+}
+</style>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var reportlist = /*[[${reportlist}]]*/null;
+	var frequency;
+
+	function submitform(a) {
+		//alert("responseText");
+
+		var input = document.getElementById("dt2");
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input.value)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+			location.href = "rbsValidations?reportDate=" + $("#dt2").val();
+		}
+	}
+
+
+	
+
+	/*]]>*/
+</script>
+</head>
+<title>XBRL</title>
+<body>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+	<div class="container content">
+		<div class="row">
+			<div class="col-sm-12">
+				<form class="form-horizontal" method="post" name="CriteriaForm"
+					id="reportform">
+							<div class="modal fade" id="finusers">
+			<div
+				class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content" style="border: 2px solid black;">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">RBS Report Master</h4>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body" style="background-color: #e6eaed;">
+						<div class="table-responsive">
+
+							<table class="table table-hover" id="my_table">
+								<thead class="thead-light" style="background-color: #386276;">
+									<tr>
+										<th>Report Code</th>
+										<th>Report Name</th>
+										<th>Report Date</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="userProfile : ${RepMaster}"
+										th:attr="data-rpt_code=${userProfile?.rpt_code},data-rpt_description = ${userProfile?.rpt_description},data-rpt_date =${userProfile?.cur_qtr_end_date}"
+										class="userlist" th:onclick="finuser(this)">
+										<td th:text="${userProfile?.rpt_code}">123</td>
+										<td th:text="${userProfile?.rpt_description}">123</td>
+										<td
+											th:text="${#dates.format(userProfile?.cur_qtr_end_date, 'dd/MM/yyyy')}"></td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center"
+							style="background-color: #386276; padding: 5px; width: 100%;">
+
+							<div class="btn-group nav-buttons " style="align: center;">
+								<button type="button" class="btn btn-xs btn-primary"
+									id="btnHome" onclick="home();" style="margin-right: 10px;">Home</button>
+								<button type="button" class="btn btn-xs btn-primary"
+									id="btnBack" onclick="back();">Back</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+		<div class="modal fade" id="alert">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg"></p>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="alert1">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg1"></p>
+					<button type="button" class="btn btn-primary" onclick="close123()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+
+
+
+</body>
+</body>
+</html>

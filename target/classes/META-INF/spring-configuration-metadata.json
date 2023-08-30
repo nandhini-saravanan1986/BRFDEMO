@@ -1,0 +1,142 @@
+{
+  "groups": [
+    {
+      "name": "datasrc",
+      "type": "com.bornfire.xbrl.config.XbrlDataSource",
+      "sourceType": "com.bornfire.xbrl.config.XbrlDataSource"
+    },
+    {
+      "name": "default",
+      "type": "com.bornfire.xbrl.controllers.XBRLNavigationController",
+      "sourceType": "com.bornfire.xbrl.controllers.XBRLNavigationController"
+    },
+    {
+      "name": "default",
+      "type": "com.bornfire.xbrl.controllers.XBRLReportsController",
+      "sourceType": "com.bornfire.xbrl.controllers.XBRLReportsController"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.AlertManagementServices",
+      "sourceType": "com.bornfire.xbrl.services.AlertManagementServices"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.GlSubHeadConfigService",
+      "sourceType": "com.bornfire.xbrl.services.GlSubHeadConfigService"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.LoginServices",
+      "sourceType": "com.bornfire.xbrl.services.LoginServices"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.BRS2_ReportService",
+      "sourceType": "com.bornfire.xbrl.services.BRS2_ReportService"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.CustomRepParamServices",
+      "sourceType": "com.bornfire.xbrl.services.CustomRepParamServices"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.CustomRepGeneratorServices",
+      "sourceType": "com.bornfire.xbrl.services.CustomRepGeneratorServices"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.ReportServices",
+      "sourceType": "com.bornfire.xbrl.services.ReportServices"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.BRS61ReportService",
+      "sourceType": "com.bornfire.xbrl.services.BRS61ReportService"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.RBSValidationservices",
+      "sourceType": "com.bornfire.xbrl.services.RBSValidationservices"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.ReportCodeMappingService",
+      "sourceType": "com.bornfire.xbrl.services.ReportCodeMappingService"
+    },
+    {
+      "name": "output",
+      "type": "com.bornfire.xbrl.services.RegulatoryReportServices",
+      "sourceType": "com.bornfire.xbrl.services.RegulatoryReportServices"
+    }
+  ],
+  "properties": [
+    {
+      "name": "default.pagesize",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.controllers.XBRLNavigationController"
+    },
+    {
+      "name": "default.pagesize",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.controllers.XBRLReportsController"
+    },
+    {
+      "name": "output.domain-list",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.bornfire.xbrl.services.ReportServices"
+    },
+    {
+      "name": "output.exportpath",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.services.GlSubHeadConfigService"
+    },
+    {
+      "name": "output.exportpath",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.services.LoginServices"
+    },
+    {
+      "name": "output.exportpath",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.services.ReportServices"
+    },
+    {
+      "name": "output.exportpath",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.services.ReportCodeMappingService"
+    },
+    {
+      "name": "output.exportpath",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.services.RegulatoryReportServices"
+    },
+    {
+      "name": "output.file-upload-list",
+      "type": "java.util.List<com.bornfire.xbrl.services.ReportServices$FileUpload>",
+      "sourceType": "com.bornfire.xbrl.services.ReportServices"
+    },
+    {
+      "name": "output.file-upload-list-c-r-r-b-s",
+      "type": "java.util.List<com.bornfire.xbrl.services.ReportServices$FileUpload>",
+      "sourceType": "com.bornfire.xbrl.services.ReportServices"
+    },
+    {
+      "name": "output.fin-users-list",
+      "type": "java.util.List<com.bornfire.xbrl.entities.FinUserProfile>",
+      "sourceType": "com.bornfire.xbrl.services.LoginServices"
+    },
+    {
+      "name": "output.password",
+      "type": "java.lang.String",
+      "sourceType": "com.bornfire.xbrl.services.LoginServices"
+    },
+    {
+      "name": "output.rep-code-map-lists",
+      "type": "java.util.List<com.bornfire.xbrl.entities.ReportCodeMap>",
+      "sourceType": "com.bornfire.xbrl.services.ReportCodeMappingService"
+    }
+  ],
+  "hints": []
+}
